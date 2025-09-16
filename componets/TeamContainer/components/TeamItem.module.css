@@ -1,0 +1,106 @@
+.card {
+  position: relative;
+  background: #fff;
+  border-radius: 32px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 30px 40px;
+  width: 368px;
+  height: 606px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.content {
+  width: 100%;
+}
+
+.title {
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--secondary-color);
+  font-size: 17px;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.label {
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--secondary-color);
+}
+
+.valueContainer {
+  display: inline-flex; 
+  flex-wrap: wrap;
+  gap: 7px;
+  position: relative;
+  border-bottom: 1px solid var(--main-color);
+  padding-bottom: 8px;
+}
+
+.valueItem {
+  color: var(--main-color);
+  font-size: 12px;
+  text-decoration: none; 
+}
+
+.imageContainer {
+  position: relative;
+  margin-top: 32px;
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+}
+
+.profileImage {
+  width: 214px;
+  height: 214px;
+  border-radius: 30px;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 15;
+  margin-left: 60px;
+}
+
+.iconContainer {
+  position: relative;
+  margin-top: -50px;
+  margin-right: 200px;
+  background: var(--main-color);
+  border-radius: 20px;
+  padding: 20px 16px;
+  z-index: 5;
+}
+
+.icon {
+  width: 69.05745697021484px;
+  height: 59.19210433959961px;
+  fill: #fff;
+  z-index: 5;
+}
+
+.addButton {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #000;
+  color: #fff;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

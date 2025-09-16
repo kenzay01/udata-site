@@ -1,0 +1,39 @@
+.mainBanner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 4rem 2rem;
+    gap: 2rem;
+}
+.mainBanner h1 {
+    font-size: 52px;
+    text-align: center;
+    color: var(--secondary-color);
+}
+.mainBanner h1 span {
+    color: var(--main-color);
+}
+.mainBanner p {
+    font-size: 15px;
+    text-align: center;
+    color: var(--light-secondary);
+    max-width: 850px;
+}
+
+.mainBanner a {
+  background: var(--main-color);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 9999px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+  font-size: 14px;
+  border: 1px solid var(--main-color);
+}
+.mainBanner a:hover {
+  background: transparent;
+  border: 1px solid var(--light-gray);
+  color: var(--secondary-color);
+}

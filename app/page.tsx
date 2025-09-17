@@ -3,6 +3,8 @@ import { Header } from "@/componets/Header/Header";
 import { MainBanner } from "@/componets/MainBanner/MainBanner";
 import {TeamContainer } from "@/componets/TeamContainer/TeamContainer";
 import { HowItWorks } from "@/componets/HowItWorks/HowItWorks";
+import { Benefits } from "@/componets/Benefits/Benefits";
+import {ComparisonTable } from "@/componets/ComparisonTable/ComparisonTable";
 
 export default function Home() {
   return (
@@ -12,6 +14,8 @@ export default function Home() {
       <MainBanner />
       <TeamContainer />
       <HowItWorks />
+      <Benefits />
+      <ComparisonTable />
     </main>
   );
 }

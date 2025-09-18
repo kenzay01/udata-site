@@ -5,6 +5,7 @@ import {TeamContainer } from "@/componets/TeamContainer/TeamContainer";
 import { HowItWorks } from "@/componets/HowItWorks/HowItWorks";
 import { Benefits } from "@/componets/Benefits/Benefits";
 import {ComparisonTable } from "@/componets/ComparisonTable/ComparisonTable";
+import { Footer } from "@/componets/Footer/Footer";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <HowItWorks />
       <Benefits />
       <ComparisonTable />
+      <Footer />
     </main>
   );
 }

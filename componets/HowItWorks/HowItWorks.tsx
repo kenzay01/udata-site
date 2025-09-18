@@ -23,7 +23,7 @@ export const HowItWorks = () => {
     {
       number: '03',
       title: 'Start risk-free',
-      description: <>Once you've chosen your developer(s), we handle all legal, payroll, and onboarding processes. You start collaborating immediately — <strong>with a 2-week free trial period.</strong></>,
+      description: <>Once you've chosen your developer(s), we handle all legal, payroll, and onboarding processes. You start collaborating immediately — with a 2-week free trial period.</>,
       additionalInfo: 'If the developer doesn\'t meet your expectations, we replace them at no cost.',
       note: 'This ensures you only keep talent that truly adds value to your company.'
     }

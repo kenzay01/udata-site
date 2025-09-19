@@ -1,0 +1,42 @@
+.successStories {
+    padding: 60px 0px;
+}
+
+.title {
+    font-size: 52px;
+    text-align: center;
+    color: var(--secondary-color);
+    font-weight: 600;
+    margin-bottom: 60px;
+}
+
+.title span {
+    color: var(--main-color);
+}
+
+.items {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 30px;
+    padding: 20px 0;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
+}
+
+.items::-webkit-scrollbar {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 36px;
+        margin-bottom: 40px;
+    }
+    
+    .items {
+        gap: 20px;
+        padding: 10px 0;
+    }
+}

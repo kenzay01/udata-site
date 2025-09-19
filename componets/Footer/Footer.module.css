@@ -60,6 +60,7 @@
     line-height: 150%;
     letter-spacing: 1%;
     color: var(--light-secondary);
+    text-align: left;
 }
 .footerRights{
     flex: 2;

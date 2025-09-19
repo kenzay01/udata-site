@@ -26,7 +26,7 @@ export const TeamItem = ({ title, experience, techStack, industries, availabilit
           <span className={cls.label}>Tech Stack & Tools</span>
           <div className={cls.valueContainer}>
             {techStack.map((tech, index) => (
-              <span key={index} className={cls.valueItem}>
+              <span key={index} className={`${cls.valueItem} ${cls.techItem}`}>
                 {tech}
               </span>
             ))}
@@ -36,7 +36,7 @@ export const TeamItem = ({ title, experience, techStack, industries, availabilit
           <span className={cls.label}>Industries</span>
           <div className={cls.valueContainer}>
             {industries.map((industry, index) => (
-              <span key={index} className={cls.valueItem}>
+              <span key={index} className={`${cls.valueItem} ${cls.techItem}`}>
                 {industry}
               </span>
             ))}

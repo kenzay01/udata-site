@@ -1,0 +1,174 @@
+.successStoriesItem {
+    min-width: 463px;
+    max-width: 605px;
+    border-radius: 32px;
+    padding: 30px 40px;
+    scroll-snap-align: center;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-origin: center;
+}
+
+.successStoriesItem.active {
+    background: #fff;
+    opacity: 1;
+    transform: scale(1);
+    z-index: 2;
+    filter: none;
+}
+
+.successStoriesItem.inactive {
+    background: #e9ecef;
+    opacity: 0.5;
+    transform: scale(0.92);
+    z-index: 1;
+    filter: grayscale(0.3) brightness(0.8);
+}
+
+.successStoriesItem.active .header {
+    background: #e9ecef;
+}
+
+.successStoriesItem.inactive .header {
+    background: #d6d8db;
+}
+
+.successStoriesItem:hover {
+    transform: scale(1.02);
+    opacity: 1;
+    filter: none;
+}
+
+.header {
+    border-radius: 26px;
+    padding: 20px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    margin-bottom: 30px;
+}
+
+.sketch {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+.content {
+    /* padding: 30px; */
+    flex: 1;
+}
+
+.companyTitle {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--secondary-color);
+    transition: color 0.3s ease;
+    font-family: Montserrat;
+    /* font-weight: 500; */
+    font-style: Medium;
+    font-size: 18px;
+    leading-trim: NONE;
+    line-height: 150%;
+    letter-spacing: 1%;
+}
+.companyTitle span {
+   color: var(--light-secondary);
+}
+
+.successStoriesItem.inactive .companyTitle {
+    color: #666;
+}
+
+.points {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 25px 0;
+    padding-left: 8px;
+}
+
+.points li {
+    position: relative;
+    padding-left: 15px;
+    margin-bottom: 12px;
+    color: #666;
+    font-size: 14px;
+    line-height: 1.5;
+    transition: color 0.3s ease;
+    font-family: Montserrat;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 12px;
+    leading-trim: NONE;
+    line-height: 150%;
+    letter-spacing: 1%;
+
+}
+
+.successStoriesItem.inactive .points li {
+    color: #888;
+}
+
+.points li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    /* color: var(--main-color, #ff6b35); */
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.successStoriesItem.inactive .points li::before {
+    color: #999;
+}
+
+.outcome {
+    color: var(--light-secondary);
+    font-size: 14px;
+    line-height: 1.5;
+    padding-top: 20px;
+    border-top: 1px solid #dee2e6;
+    transition: color 0.3s ease;
+    font-family: Montserrat;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 12px;
+    leading-trim: NONE;
+    line-height: 150%;
+    letter-spacing: 1%;
+
+}
+
+.successStoriesItem.inactive .outcome {
+    color: #666;
+}
+
+/* .outcome strong {
+    color: #333;
+    transition: color 0.3s ease;
+} */
+
+.successStoriesItem.inactive .outcome strong {
+    color: #666;
+}
+
+@media (max-width: 768px) {
+    .successStoriesItem {
+        min-width: 320px;
+        max-width: 320px;
+    }
+    
+    .content {
+        padding: 20px;
+    }
+    
+    .companyTitle {
+        font-size: 18px;
+    }
+}

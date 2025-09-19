@@ -6,6 +6,8 @@ import { HowItWorks } from "@/componets/HowItWorks/HowItWorks";
 import { Benefits } from "@/componets/Benefits/Benefits";
 import {ComparisonTable } from "@/componets/ComparisonTable/ComparisonTable";
 import { Footer } from "@/componets/Footer/Footer";
+import {SuccessStories} from "@/componets/SuccessStories/SuccessStories";
+import {PricingContainer} from "@/componets/PricingContainer/PricingContainer";
 
 export default function Home() {
   return (
@@ -17,6 +19,8 @@ export default function Home() {
       <HowItWorks />
       <Benefits />
       <ComparisonTable />
+      <SuccessStories />
+      <PricingContainer />
       <Footer />
     </main>
   );

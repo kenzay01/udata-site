@@ -135,7 +135,7 @@ export const SuccessStories = () => {
         setActiveIndex(index);
         if (containerRef.current) {
             const itemWidth = 500;
-            const scrollLeft = index * itemWidth;
+            const scrollLeft = index * itemWidth + 50;
             containerRef.current.scrollTo({
                 left: scrollLeft,
                 behavior: 'smooth'
@@ -148,7 +148,7 @@ export const SuccessStories = () => {
     };
 
     return (
-        <section className={cls.successStories}>
+        <section className={cls.successStories} id="success-stories">
             <h2 className={cls.title}><span>Success</span> Stories</h2>
             <div className={cls.items} ref={containerRef}>
                 {stories.map((story, index) => (

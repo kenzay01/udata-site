@@ -30,7 +30,7 @@ export const HowItWorks = () => {
   ];
 
   return (
-    <section className={cls.howItWorks}>
+    <section className={cls.howItWorks} id="how-it-works">
       <h1><span>How</span> It Works</h1>
       
       <div className={cls.stepsContainer}>

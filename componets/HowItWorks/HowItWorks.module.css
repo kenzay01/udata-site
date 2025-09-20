@@ -118,3 +118,43 @@
     color: var(--light-secondary);
     line-height: 24px;
 }
+
+@media (max-width: 600px) {
+    .stepTitle {
+        font-family: Montserrat;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 24px;
+        leading-trim: NONE;
+        line-height: 150%;
+        letter-spacing: 1%;
+        text-align: center;
+
+    }
+    .stepDescription {
+        font-family: Montserrat;
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 15px;
+        leading-trim: NONE;
+        line-height: 24px;
+        letter-spacing: 0%;
+        vertical-align: middle;
+
+    }
+    .stepNote{
+        font-family: Montserrat;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 12px;
+        leading-trim: NONE;
+        line-height: 24px;
+        letter-spacing: 0%;
+        text-align: center;
+        vertical-align: middle;
+
+    }
+    .stepContent {
+        max-height: none;
+    }
+}

@@ -7,3 +7,9 @@
     align-self: center;
     margin: 0 auto;
 }
+@media (max-width: 600px) {
+    .teamContainer{
+        flex-direction: column;
+        gap: 20px;
+    }
+}

@@ -28,7 +28,7 @@ export const PricingContainer = () => {
     };
 
     return (
-        <section className={cls.pricingContainer}>
+        <section className={cls.pricingContainer} id="pricing">
             <h1>Pricing</h1>
             <p>
                 Check out the approximate rate of needed professionals <br /> 

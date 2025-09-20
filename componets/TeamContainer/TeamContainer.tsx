@@ -34,7 +34,7 @@ export const TeamContainer = () => {
   ];
 
   return (
-    <section className={cls.teamContainer}>
+    <section className={cls.teamContainer} id="team">
       {teamData.map((item, index) => (
         <TeamItem key={index} {...item} />
       ))}

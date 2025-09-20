@@ -124,8 +124,14 @@ a.secondary {
     text-underline-offset: 4px;
   }
 }
+.spacer{
+  height: 100px;
+}
 
 @media (max-width: 600px) {
+  .spacer{
+    height: 40px;
+  }
   .page {
     padding: 32px;
     padding-bottom: 80px;

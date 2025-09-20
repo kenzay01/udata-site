@@ -42,7 +42,7 @@ export const ComparisonTable = () => {
     ];
 
     return (
-        <section className={cls.comparisonTable}>
+        <section className={cls.comparisonTable} id="comparison-table">
             <h1><span>Comparison</span> Table</h1>
             <div className={cls.comparisonTableContent}>
                 <div className={cls.comparisonCards}>

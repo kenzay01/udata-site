@@ -8,12 +8,13 @@ import {ComparisonTable } from "@/componets/ComparisonTable/ComparisonTable";
 import { Footer } from "@/componets/Footer/Footer";
 import {SuccessStories} from "@/componets/SuccessStories/SuccessStories";
 import {PricingContainer} from "@/componets/PricingContainer/PricingContainer";
+import { FaqSection } from "@/componets/FaqSection/FaqSection";
 
 export default function Home() {
   return (
     <main>
       <Header />
-      <div style={{ height: "100px" }} />
+      <div className={cls.spacer}/>
       <MainBanner />
       <TeamContainer />
       <HowItWorks />
@@ -21,6 +22,7 @@ export default function Home() {
       <ComparisonTable />
       <SuccessStories />
       <PricingContainer />
+      <FaqSection />
       <Footer />
     </main>
   );

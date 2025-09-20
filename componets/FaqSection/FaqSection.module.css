@@ -1,0 +1,31 @@
+.faqSection {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 80px;
+    padding: 0 20px;
+}
+
+.faqSection h1 {
+    font-size: 52px;
+    text-align: center;
+    color: var(--secondary-color);
+    font-weight: 600;
+    margin-bottom: 60px;
+}
+
+.faqContent {
+    /* max-width: 800px; */
+    /* margin: 0 auto; */
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .faqSection h1 {
+        font-size: 36px;
+        margin-bottom: 40px;
+    }
+}

@@ -5,10 +5,26 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import Image from "next/image";
-import logo from "@/public/logo.png";
+import logo from "@/public/main_logo.png";
+import logoMobile from "@/public/main_logo_phone.png";
+import {MenuIcon} from "@/utils/MenuIcon";
 
 export const Header = () => {
   const [open, setOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const linksNav = [
     { name: "How It Works", href: "#how-it-works" },
@@ -42,7 +58,7 @@ export const Header = () => {
     <header className={cls.header}>
       <section className={cls.headerContainer}>
         <div className={cls.logo}>
-          <Image src={logo} alt="Logo" width={600} height={600} />
+          <Image src={isMobile ? logoMobile : logo} alt="Logo" width={1200} height={1200} />
         </div>
 
         <nav className={`${cls.nav} ${open ? cls.open : ""}`}>
@@ -63,11 +79,11 @@ export const Header = () => {
         <div className={cls.rightSection}>
           <Link href="/#" className={cls.btnLogin}>Schedule a Call</Link>
           <button 
-            className={cls.burger} 
+            className={`${cls.burger} ${open ? cls.open : ""}`} 
             onClick={() => setOpen(!open)}
             aria-label={open ? "Close menu" : "Open menu"}
           >
-            {open ? <FiX size={24} /> : <FiMenu size={24} />}
+            <div><MenuIcon /></div> <span>Menu</span>
           </button>
         </div>
       </section>

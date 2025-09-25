@@ -90,6 +90,7 @@
 }
 
 .burger {
+  display: none;
   background: #fff;
   color: var(--secondary-color);
   padding: 10px 15px;
@@ -101,11 +102,6 @@
   border: 1px solid var(--light-gray);
   text-decoration: none;
   /* display: inline-block; */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  gap: 8px;
 }
 .burger:hover {
   background: transparent;
@@ -119,9 +115,26 @@
 }
 
 @media (max-width: 768px) {
+  .burger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 8px;
+  }
+  .btnLogin{
+    font-family: Montserrat;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 12px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+
+  }
   .headerContainer {
-    padding: 1rem;
-    gap: 1rem;
+    padding: 12px 8px;
+    gap: 8px;
     position: relative;
   }
 
@@ -129,9 +142,9 @@
     display: none;
   }
 
-.mobileCallBtn {
-  display: none;
-}
+  .mobileCallBtn {
+    display: none;
+  }
   .nav.open {
     display: block;
     position: absolute;
@@ -188,7 +201,7 @@
 }
   
   .logo {
-    max-width: 130px;
+    max-width: 120px;
     display: flex;
     align-items: center;
   }

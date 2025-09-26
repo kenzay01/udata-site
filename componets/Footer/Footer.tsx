@@ -74,8 +74,8 @@ export const Footer = () => {
             </div>
             <p className={cls.footerQuote}>“Don’t risk delays - hire developers as early as next week”</p>
             <p className={cls.footerRights}> <span>U<AtIcon className={cls.atIcon} /></span>Data Outstaff, 2025 <br /> All rights reserved</p>
-            <p className={cls.footerLocation}><strong>Location</strong> <br /> USA, Cocksucker Avenue 4’</p>
-            <p className={cls.footerContact}><strong>Contact Mail</strong> <br /> cocksucker@gmail.com</p>
+            <p className={cls.footerLocation}><strong>Location</strong> <br /> Poznań, Poland <br /> Kyiv, Ukraine</p>
+            <p className={cls.footerContact}><strong>Contact Mail</strong> <br /> <a href="mailto:dmytro@udata.company">dmytro@udata.company</a></p>
         </div>
         </section>
     </footer>

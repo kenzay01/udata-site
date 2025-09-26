@@ -12,7 +12,7 @@ export const PricingContainer = () => {
         { name: 'Frontend Developer', hourlyRate: 20 }, 
         { name: 'Full-stack Developer', hourlyRate: 24 },
         { name: 'Mobile Developer', hourlyRate: 22 },
-        { name: 'Data Scientist', hourlyRate: 25 }, 
+        { name: 'Data Engineer', hourlyRate: 25 }, 
     ];
 
     const handleProfessionToggle = (professionName: string) => {

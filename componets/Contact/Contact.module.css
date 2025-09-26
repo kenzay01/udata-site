@@ -94,7 +94,7 @@
     font-family: inherit;
     height: 46px;
     width: 100%;
-    
+    resize: none;
 }
 
 .formInput:focus,
@@ -111,7 +111,6 @@
 
 .formTextarea {
     min-height: 68px;
-    resize: vertical;
     padding-bottom: 30px;
     display: flex;
     align-items: center;

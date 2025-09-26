@@ -2,29 +2,38 @@
 
 import { useState } from 'react';
 import cls from './PricingContainer.module.css';
+import Link from 'next/link';
 
 export const PricingContainer = () => {
     const [selectedProfessions, setSelectedProfessions] = useState<string[]>([]);
 
     const professions = [
-        'Full-stack Developer',
-        'Frontend Developer', 
-        'Backend Developer',
-        'Mobile Developer',
-        'DevOps Engineer',
-        'UI/UX Designer',
-        'QA Engineer',
-        'Data Scientist'
+        { name: 'Backend Developer', hourlyRate: 20 },
+        { name: 'Frontend Developer', hourlyRate: 20 }, 
+        { name: 'Full-stack Developer', hourlyRate: 24 },
+        { name: 'Mobile Developer', hourlyRate: 22 },
+        { name: 'Data Scientist', hourlyRate: 25 }, 
     ];
 
-    const handleProfessionToggle = (profession: string) => {
+    const handleProfessionToggle = (professionName: string) => {
         setSelectedProfessions(prev => {
-            if (prev.includes(profession)) {
-                return prev.filter(p => p !== profession);
+            if (prev.includes(professionName)) {
+                return prev.filter(p => p !== professionName);
             } else {
-                return [...prev, profession];
+                return [...prev, professionName];
             }
         });
+    };
+
+    const calculateHourlyRate = () => {
+        return selectedProfessions.reduce((total, professionName) => {
+            const profession = professions.find(p => p.name === professionName);
+            return total + (profession?.hourlyRate || 0);
+        }, 0);
+    };
+
+    const calculateMonthlyRate = () => {
+        return calculateHourlyRate() * 173;
     };
 
     return (
@@ -45,14 +54,19 @@ export const PricingContainer = () => {
                     <div className={cls.checkboxGrid}>
                         {professions.map((profession) => (
                             <label 
-                                key={profession} 
-                                className={`${cls.checkboxItem} ${selectedProfessions.includes(profession) ? cls.selected : ''}`}
+                                key={profession.name} 
+                                className={`${cls.checkboxItem} ${selectedProfessions.includes(profession.name) ? cls.selected : ''}`}
                             >
-                                <span className={cls.checkboxText}>{profession}</span>
+                                <span className={cls.checkboxText}>
+                                    {profession.name}
+                                    <span style={{ fontSize: '0.8em', color: '#666', marginLeft: '8px' }}>
+                                        (${profession.hourlyRate}/hr)
+                                    </span>
+                                </span>
                                 <input
                                     type="checkbox"
-                                    checked={selectedProfessions.includes(profession)}
-                                    onChange={() => handleProfessionToggle(profession)}
+                                    checked={selectedProfessions.includes(profession.name)}
+                                    onChange={() => handleProfessionToggle(profession.name)}
                                 />
                             </label>
                         ))}
@@ -62,11 +76,31 @@ export const PricingContainer = () => {
                 <div className={cls.choiceSection}>
                     <span className={cls.choiceLabel}>Choice:</span>
                     <div className={cls.selectedItems}>
-                        {selectedProfessions.map((profession) => (
-                            <span key={profession} className={cls.selectedItem}>
-                                {profession}
-                            </span>
-                        ))}
+                        {selectedProfessions.map((professionName) => {
+                            const profession = professions.find(p => p.name === professionName);
+                            return (
+                                <span key={professionName} className={cls.selectedItem}>
+                                    {professionName} (${profession?.hourlyRate}/hr)
+                                </span>
+                            );
+                        })}
+                    </div>
+                </div>
+                
+                <div className={cls.pricingSection}>
+                    <div className={cls.pricingInfo}>
+                        <h3>Approximate cost of your project team:</h3>
+                        <div className={cls.pricingValues}>
+                            <span className={cls.price}>
+                                ${calculateHourlyRate()} / Hr
+                            </span> 
+                            <span className={cls.price}>
+                                ${calculateMonthlyRate().toLocaleString()} / Month
+                            </span> 
+                        </div>
+                    </div>
+                    <div className={cls.requestCallSection}>
+                        <Link href="/#contact" className={cls.requestCall}>Member Team</Link>
                     </div>
                 </div>
             </div>

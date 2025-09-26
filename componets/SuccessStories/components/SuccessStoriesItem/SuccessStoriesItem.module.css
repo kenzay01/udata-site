@@ -102,6 +102,9 @@
     font-size: 14px;
     font-weight: 500;
     backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .countryTag {

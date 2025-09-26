@@ -9,6 +9,7 @@ import { Footer } from "@/componets/Footer/Footer";
 import {SuccessStories} from "@/componets/SuccessStories/SuccessStories";
 import {PricingContainer} from "@/componets/PricingContainer/PricingContainer";
 import { FaqSection } from "@/componets/FaqSection/FaqSection";
+import { Contact } from "@/componets/Contact/Contact";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       <ComparisonTable />
       <SuccessStories />
       <PricingContainer />
+      <Contact />
       <FaqSection />
       <Footer />
     </main>

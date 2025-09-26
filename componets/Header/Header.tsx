@@ -77,7 +77,7 @@ export const Header = () => {
         </nav>
 
         <div className={cls.rightSection}>
-          <Link href="/#" className={cls.btnLogin}>Schedule a Call</Link>
+          <Link href="/#contact" className={cls.btnLogin}>Schedule a Call</Link>
           <button 
             className={`${cls.burger} ${open ? cls.open : ""}`} 
             onClick={() => setOpen(!open)}

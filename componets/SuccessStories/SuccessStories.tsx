@@ -5,6 +5,7 @@ import { StoryModal } from './components/StoryModal/StoryModal';
 import cls from './SuccessStories.module.css';
 import { RedDogFish, Livetrend, RetailShake, SpaceShelf, Adeo, PerspektPerson, AdeoModal } from "@/utils/Logos";
 import { ReactIcon, Python, Energy, Postgres, AWS, Broom, Shell, Cloud, Golang, Lizer } from '@/utils/TechStack';
+import { UAflag, DEflag, FRflag, PLflag  } from '@/utils/Flags';
 
 export const SuccessStories = () => {
     const [activeIndex, setActiveIndex] = useState(0);
@@ -21,7 +22,7 @@ export const SuccessStories = () => {
             id: 1,
             title: "From Scratch to Market-Ready: eSIM Deployment",
             country: "Telecom",
-            flag: "🇫🇷",
+            flag: <UAflag />,
             description: "We developed and launched a full-scale eSIM service from concept to production, enabling users to connect mobile services without physical SIM cards.",
             fullDescription: <>We developed and launched a full-scale eSIM service from concept to production, enabling users to connect mobile services without physical SIM cards. <br /><br /> This solution allowed the client to scale their business, optimize large-scale data and user management, and combine a seamless customer experience with high efficiency and stability for the company</>,
             metrics: ["$23-25", "On Going", "$16 000 / Month"],
@@ -45,8 +46,8 @@ export const SuccessStories = () => {
         {
             id: 2,
             title: "A Leading Fashion Retailer Gains Speed with Automation",
-            country: "Telecom",
-            flag: "🇫🇷",
+            country: "Retail",
+            flag: <FRflag />,
             description: "We implemented an automated system for data collection and processing, providing the brand with real-time insights.",
             fullDescription: <>We implemented an automated system for data collection and processing, providing the brand with real-time insights. <br /><br /> This enabled faster response to market demand, optimized sales, and improved customer engagement</>,
             metrics: ["$20-22", "On Going", "$14 000 / month"],
@@ -72,8 +73,8 @@ export const SuccessStories = () => {
         {
             id: 3,
             title: "360° Tool for Price and Promotion Monitoring",
-            country: "Telecom",
-            flag: "🇫🇷",
+            country: "Retail",
+            flag: <FRflag />,
             description: "We developed a platform for daily monitoring of competitor prices, promotions, and product assortment.",
             fullDescription: <>We developed a platform for daily monitoring of competitor prices, promotions, and product assortment. <br /><br /> The solution empowered brands to control their strategy, adjust marketing activities on time, and make data-driven business decisions</>,
             metrics: ["$20", "On Going", "$10 000 / month"],
@@ -97,8 +98,8 @@ export const SuccessStories = () => {
         {
             id: 4,
             title: "Optimizing Warehouse Operations for E commerce",
-            country: "Telecom",
-            flag: "🇵🇱",
+            country: "E-Commerce",
+            flag: <DEflag />,
             description: "We built an MVP E-commerce platform with an automated sales and warehouse management system.",
             fullDescription: <>We built an MVP e-commerce platform with an automated sales and warehouse management system. <br /><br /> As a result, the client minimized manual operations, improved inventory accuracy, and prepared the business for scaling</>,
             metrics: ["$20-25", "6 months", "$70 000"],
@@ -123,8 +124,8 @@ export const SuccessStories = () => {
         {
             id: 5,
             title: "From Fragmented Tools to a Unified SMS Platform",
-            country: "Spain",
-            flag: "🇪🇸",
+            country: "Telecom",
+            flag: <UAflag />,
             description: "We created a platform for SMS delivery testing that consolidated multiple tools into a single system.",
             fullDescription: <>We created a platform for SMS delivery testing that consolidated multiple tools into a single system. <br /><br /> It ensured reliable service performance, automated testing processes, and reduced maintenance costs</>,
             metrics: ["$20-22", "On Going", "$7500 / month"],
@@ -150,8 +151,8 @@ export const SuccessStories = () => {
         {
             id: 6,
             title: "AI-Powered Lead Generation for HR Outstaffing",
-            country: "Italy",
-            flag: "🇮🇹",
+            country: "HR Tech",
+            flag: <PLflag />,
             description: "We built an AI-driven solution to automate candidate sourcing through social networks, generating a relevant talent pool.",
             fullDescription: <>We built an AI-driven solution to automate candidate sourcing through social networks, generating a relevant talent pool. <br /><br /> This significantly reduced recruitment time and boosted the efficiency of the client's HR processes</>,
             metrics: ["$23", "On Going", "$4000 / month"],
@@ -169,8 +170,8 @@ export const SuccessStories = () => {
                 <Python />, 
                 <Postgres />, 
                 <ReactIcon />, 
-                <AWS />, 
-                <Lizer />
+                <Lizer />,
+                <AWS />
             ]
         }
     ];

@@ -4,6 +4,7 @@ import cls from './StoryModal.module.css';
 // import { X } from 'lucide-react';
 import {CloseIcon, ArrowStairsUp} from "@/utils/MenuIcon";
 import Image, { StaticImageData } from 'next/image';
+import Link from 'next/link';
 
 interface StoryModalProps {
     isOpen: boolean;
@@ -81,7 +82,7 @@ export const StoryModal: React.FC<StoryModalProps> = ({ isOpen, onClose, story }
                     <div className={cls.line}></div>
                     <div className={cls.modalBelowContent}>
                         <div className={cls.teamMembers}>
-                            <h3 className={cls.sectionTitle}>Team Members:</h3>
+                            <h3 className={cls.sectionTitle}>Outstaff Specialists:</h3>
                             <div className={cls.teamGrid}>
                                 {story.teamMembers.map((member, index) => (
                                     <div key={index} className={cls.teamMember}>
@@ -90,14 +91,21 @@ export const StoryModal: React.FC<StoryModalProps> = ({ isOpen, onClose, story }
                                 ))}
                             </div>
                         </div>
-                        <div className={cls.techStack}>
-                            <h3 className={cls.sectionTitle}>Tech Stack:</h3>
+                        <div className={cls.techStackSection}>
                             <div className={cls.techStack}>
-                                {story.techStack.map((tech, index) => (
-                                    <div key={index} className={cls.techItem}>
-                                        {tech}
-                                    </div>
-                                ))}
+                                <h3 className={cls.sectionTitle}>Tech Stack:</h3>
+                                <div className={cls.techStack}>
+                                    {story.techStack.map((tech, index) => (
+                                        <div key={index} className={cls.techItem}>
+                                            {tech}
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                            <div className={cls.requestCall}>
+                                <Link href="/#contact" onClick={() => {
+                                    onClose();
+                                }}>Request a Call</Link>
                             </div>
                         </div>
                     </div>                

@@ -6,7 +6,7 @@ import Image, { StaticImageData } from 'next/image';
 interface SuccessStoriesItemProps {
     title: string;
     country: string;
-    flag: string;
+    flag: React.ReactNode;
     isActive?: boolean;
     onClick?: () => void;
     onExploreMore?: () => void;

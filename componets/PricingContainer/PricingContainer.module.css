@@ -26,7 +26,7 @@
 }
 
 .pricingPlans {
-    min-height: 450px;
+    min-height: 515px;
     background-color: #fff;
     padding: 40px 30px 30px;
     border-radius: 32px;
@@ -35,9 +35,9 @@
     justify-content: space-between;
 }
 
-.hiringSection {
+/* .hiringSection {
     flex: 1;
-}
+} */
 
 .sectionHeader {
     display: flex;
@@ -71,7 +71,7 @@
 
 .checkboxGrid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 15px;
     margin-bottom: 40px;
 }
@@ -153,7 +153,15 @@
     text-align: left;
     flex-wrap: wrap;
     border-radius: 50px;
-    min-height: 56px;
+    min-height: 60px;
+    /* flex: 3; */
+}
+.requestCallSection{
+    flex: 1;
+    height: 100%;
+    align-self: flex-end;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .choiceLabel {
@@ -189,6 +197,69 @@
     font-weight: 500;
     white-space: nowrap;
     animation: slideIn 0.3s ease;
+}
+
+.pricingSection{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    /* gap: 100px; */
+}
+.pricingInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+}
+.pricingInfo h3{
+    font-family: Montserrat;
+    font-weight: 300;
+    font-style: Light;
+    font-size: 15px;
+    leading-trim: NONE;
+    line-height: 24px;
+    letter-spacing: 0%;
+    text-align: center;
+    vertical-align: middle;
+
+}
+.pricingValues{
+    display: flex;
+    gap: 12px;
+}
+.price{
+    padding: 8px 16px;
+    background: var(--main-color);
+    font-family: Montserrat;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 15px;
+    leading-trim: NONE;
+    line-height: 150%;
+    letter-spacing: 1%;
+    color: #fff;
+    border-radius: 20px;
+
+}
+
+.requestCall{
+  background: var(--main-color);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 9999px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+  font-size: 14px;
+  border: 1px solid var(--main-color);
+  text-decoration: none;
+  display: inline-block;
+}
+.requestCall:hover {
+  background: transparent;
+  border: 1px solid var(--light-gray);
+  color: var(--secondary-gray);
 }
 
 @keyframes slideIn {

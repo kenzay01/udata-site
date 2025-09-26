@@ -7,7 +7,7 @@ import { FiMenu, FiX } from "react-icons/fi";
 import Image from "next/image";
 import logo from "@/public/main_logo.png";
 import logoMobile from "@/public/main_logo_phone.png";
-import {MenuIcon} from "@/utils/MenuIcon";
+import {MenuIcon, LogoIcon, LogoMobileIcon} from "@/utils/MenuIcon";
 
 export const Header = () => {
   const [open, setOpen] = useState(false);
@@ -58,7 +58,8 @@ export const Header = () => {
     <header className={cls.header}>
       <section className={cls.headerContainer}>
         <div className={cls.logo}>
-          <Image src={isMobile ? logoMobile : logo} alt="Logo" width={1200} height={1200} />
+          {/* <Image src={isMobile ? logoMobile : logo} alt="Logo" width={1200} height={1200} /> */}
+          {isMobile ? <LogoMobileIcon /> : <LogoIcon />}
         </div>
 
         <nav className={`${cls.nav} ${open ? cls.open : ""}`}>

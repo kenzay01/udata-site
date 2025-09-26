@@ -100,7 +100,9 @@ export const PricingContainer = () => {
                         </div>
                     </div>
                     <div className={cls.requestCallSection}>
-                        <Link href="/#contact" className={cls.requestCall}>Member Team</Link>
+                        <Link rel="noopener noreferrer"
+            target="_blank"
+            href="https://calendly.com/dmytro-udata/meet-with-me" className={cls.requestCall}>Member Team</Link>
                     </div>
                 </div>
             </div>

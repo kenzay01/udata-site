@@ -103,7 +103,9 @@ export const StoryModal: React.FC<StoryModalProps> = ({ isOpen, onClose, story }
                                 </div>
                             </div>
                             <div className={cls.requestCall}>
-                                <Link href="/#contact" onClick={() => {
+                                <Link rel="noopener noreferrer"
+            target="_blank"
+            href="https://calendly.com/dmytro-udata/meet-with-me" onClick={() => {
                                     onClose();
                                 }}>Request a Call</Link>
                             </div>

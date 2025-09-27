@@ -25,8 +25,8 @@ const benefitsData = [
   },
   {
     id: 4,
-    title: "2 Weeks of Free Onboarding",
-    description1: "Your first 14 days are on us.",
+    title: "Week of Free Onboarding",
+    description1: "Your first 7 days are on us.",
     description2: "Work with our developers, check collaboration, and only pay if you're fully satisfied."
   }
 ];

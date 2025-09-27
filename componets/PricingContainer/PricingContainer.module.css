@@ -173,7 +173,7 @@
     font-weight: 500;
     font-style: Medium;
     font-size: 18px;
-    leading-trim: NONE;
+    
     line-height: 150%;
     letter-spacing: 1%;
 
@@ -218,7 +218,7 @@
     font-weight: 300;
     font-style: Light;
     font-size: 15px;
-    leading-trim: NONE;
+    
     line-height: 24px;
     letter-spacing: 0%;
     text-align: center;
@@ -236,7 +236,7 @@
     font-weight: 500;
     font-style: Medium;
     font-size: 15px;
-    leading-trim: NONE;
+    
     line-height: 150%;
     letter-spacing: 1%;
     color: #fff;
@@ -312,7 +312,7 @@
 font-weight: 600;
 font-style: SemiBold;
 font-size: 14px;
-leading-trim: NONE;
+
 line-height: 100%;
 letter-spacing: 0%;
 

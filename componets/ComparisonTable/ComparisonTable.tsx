@@ -14,7 +14,7 @@ export const ComparisonTable = () => {
     const udataValues = [
         "3-7 Days",
         "None",
-        "14 Days Free",
+        "7 Days Free",
         "Free & Fast", 
         "EU / GDPR Ready",
         "90% +",

@@ -132,7 +132,7 @@
     font-weight: 500;
     font-style: Medium;
     font-size: 32px;
-    leading-trim: NONE;
+    
     line-height: 150%;
     letter-spacing: 1%;
 
@@ -149,7 +149,7 @@
     font-weight: 400;
     font-style: Regular;
     font-size: 15px;
-    leading-trim: NONE;
+    
     line-height: 150%;
     letter-spacing: 1%;
 
@@ -225,7 +225,7 @@
     width: 96%;
     border: 3px solid #F2F2F2;
     height: 3px;
-    angle: 0deg;
+    
     border-radius: 35px;
     color: #F2F2F2;
     margin-top: 4px;
@@ -250,7 +250,7 @@
     font-weight: 500;
     font-style: Medium;
     font-size: 12px;
-    leading-trim: NONE;
+    
     /* line-height: 24px; */
     letter-spacing: 0%;
     vertical-align: middle;
@@ -275,7 +275,7 @@
     /* font-weight: 600; */
     /* font-style: SemiBold; */
     font-size: 12px;
-    leading-trim: NONE;
+    
     line-height: 100%;
     letter-spacing: 0%;
 
@@ -292,10 +292,6 @@
     flex-wrap: wrap;
     gap: 12px;
     align-items: center;
-}
-.requestCall{
-    /* margin-top: auto; */
-    /* text-align: right; */
 }
 .requestCall a {
   background: var(--main-color);

@@ -19,7 +19,7 @@ const faqData = [
     },
     {
         question: "What happens if the developer isn't a good fit?",
-        answer: "You get a 2-week free trial period with every developer. If you're not satisfied, we provide a free replacement at no extra cost."
+        answer: "You get a week free trial period with every developer. If you're not satisfied, we provide a free replacement at no extra cost."
     },
     {
         question: "How do you handle legal and compliance?",

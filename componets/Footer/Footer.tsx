@@ -7,6 +7,7 @@ import logo from '@/public/logo.png'
 import { LinkedInIcon, InstagramIcon } from '@/utils/Social'
 import Link from 'next/link'
 import { AtIcon } from '@/utils/AtIcon'
+import staffPowerLogo from '@/public/staff_power.png'
 
 export const Footer = () => {
     const linksNav = [
@@ -18,8 +19,8 @@ export const Footer = () => {
         { name: "FAQ", href: "#faq" },
     ];
     const socialsLinks = [
-        { name: "Twitter", href: "https://twitter.com/udata_tech", icon: <InstagramIcon /> },
-        { name: "LinkedIn", href: "https://www.linkedin.com/company/udata-tech", icon: <LinkedInIcon /> },
+        { name: "LinkedIn", href: "https://www.linkedin.com/company/udataua", icon: <LinkedInIcon /> },
+        { name: "StaffPower", href: "https://staffpower.pl/", icon: <Image src={staffPowerLogo} alt="StaffPower" width={130} height={80} style={{ objectFit: 'contain' }} /> },
     ];
     const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();

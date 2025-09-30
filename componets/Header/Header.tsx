@@ -57,10 +57,10 @@ export const Header = () => {
   return (
     <header className={cls.header}>
       <section className={cls.headerContainer}>
-        <div className={cls.logo}>
+        <Link href={"https://udata.company/"} className={cls.logo}>
           {/* <Image src={isMobile ? logoMobile : logo} alt="Logo" width={1200} height={1200} /> */}
           {isMobile ? <LogoMobileIcon /> : <LogoIcon />}
-        </div>
+        </Link>
 
         <nav className={`${cls.nav} ${open ? cls.open : ""}`}>
           <ul>

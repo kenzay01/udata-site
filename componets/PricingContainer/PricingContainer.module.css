@@ -296,7 +296,10 @@
     .checkboxText {
         font-size: 13px;
     }
-    
+    .requestCall{
+        font-size: 12px;
+        padding: 8px 12px;
+    }
     .choiceSection {
         /* flex-direction: column; */
         /* align-items: flex-start; */
@@ -325,12 +328,16 @@ letter-spacing: 0%;
     }
     
     .sectionHeader {
-        flex-direction: column;
+        /* flex-direction: column; */
         text-align: center;
         gap: 15px;
     }
     
     .sectionHeader h2 {
         text-align: center;
+    }
+    .requestCall{
+        font-size: 12px;
+        padding: 8px 12px;
     }
 }

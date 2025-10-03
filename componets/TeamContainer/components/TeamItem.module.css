@@ -108,7 +108,7 @@
   color: #fff;
   border: none;
   font-size: 20px;
-  cursor: pointer;
+  /* cursor: pointer; */
   display: flex;
   align-items: center;
   justify-content: center;

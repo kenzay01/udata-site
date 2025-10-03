@@ -1,7 +1,8 @@
 'use client';
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useState, useEffect, useRef } from 'react';
 import cls from './SuccessStoriesItem.module.css';
 import Image, { StaticImageData } from 'next/image';
+import { CloseIcon, ArrowStairsUp } from "@/utils/MenuIcon";
 
 interface SuccessStoriesItemProps {
     title: string;
@@ -18,6 +19,14 @@ interface SuccessStoriesItemProps {
     img?: StaticImageData | React.ReactNode;
     logo?: React.ReactNode;
     cardColorBack?: string;
+    fullDescription?: React.ReactNode;
+    points?: React.ReactNode[];
+    teamMembers?: React.ReactNode[];
+    techStack?: React.ReactNode[];
+    isExpanded?: boolean;
+    onExpandChange?: (expanded: boolean) => void;
+    isMobile?: boolean;
+    imgPhone?: StaticImageData | React.ReactNode;
 }
 
 export const SuccessStoriesItem = forwardRef<HTMLDivElement, SuccessStoriesItemProps>(({ 
@@ -33,12 +42,39 @@ export const SuccessStoriesItem = forwardRef<HTMLDivElement, SuccessStoriesItemP
     metrics,
     img,
     logo,
-    cardColorBack
+    cardColorBack,
+    fullDescription,
+    points,
+    teamMembers,
+    techStack,
+    isExpanded = false,
+    onExpandChange,
+    isMobile = false,
+    imgPhone
 }, ref) => {
+    const [localExpanded, setLocalExpanded] = useState(false);
+    const contentRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        setLocalExpanded(isExpanded);
+    }, [isExpanded]);
 
     const handleExploreClick = (e: React.MouseEvent) => {
-        e.stopPropagation(); // Prevent triggering the card click
-        onExploreMore?.();
+        e.stopPropagation();
+        
+        if (isMobile) {
+            const newState = !localExpanded;
+            setLocalExpanded(newState);
+            onExpandChange?.(newState);
+        } else {
+            onExploreMore?.();
+        }
+    };
+
+    const handleClose = (e: React.MouseEvent) => {
+        e.stopPropagation();
+        setLocalExpanded(false);
+        onExpandChange?.(false);
     };
 
     return (
@@ -46,7 +82,7 @@ export const SuccessStoriesItem = forwardRef<HTMLDivElement, SuccessStoriesItemP
             {isFirst && <div style={{paddingLeft: '180px'}}></div>}
             <div 
                 ref={ref}
-                className={`${cls.successStoriesItem} ${isActive ? cls.active : cls.inactive}`}
+                className={`${cls.successStoriesItem} ${isActive ? cls.active : cls.inactive} ${localExpanded && isMobile ? cls.expanded : ''}`}
                 onClick={onClick}
             >
                 <div className={cls.cardContent}>
@@ -60,21 +96,32 @@ export const SuccessStoriesItem = forwardRef<HTMLDivElement, SuccessStoriesItemP
                         <div className={cls.logoContainer}>
                             {logo}
                         </div>
-                        {img && (
+                        {(isMobile ? imgPhone : img) && (
                             <div className={cls.imageContainer}>
-                                {typeof img === "object" && "src" in img ? (
-                                    <Image src={img as StaticImageData} alt={title} />
-                                ) : (
-                                    img
-                                )}
+                                {(() => {
+                                    const imageSource = isMobile ? imgPhone : img;
+                                    if (
+                                        imageSource &&
+                                        typeof imageSource === "object" &&
+                                        "src" in imageSource
+                                    ) {
+                                        return <Image src={imageSource as StaticImageData} alt={title} />;
+                                    }
+                                    if (
+                                        React.isValidElement(imageSource)
+                                    ) {
+                                        return imageSource;
+                                    }
+                                    return null;
+                                })()}
                             </div>
                         )}
                     </div>
-                    {/* White content section */}
+                    
                     <div className={cls.whiteContent}>
                         <h1 className={cls.companyTitle}>{title}</h1>
                         <p className={cls.description}>
-                            {description}
+                            {localExpanded ? fullDescription :description}
                         </p>
                         
                         <div className={cls.metrics}>
@@ -82,11 +129,69 @@ export const SuccessStoriesItem = forwardRef<HTMLDivElement, SuccessStoriesItemP
                                 <span className={cls.metricValue} key={index}>{metric}</span>
                             ))}
                         </div>
+                        {isMobile && (
+                            <div 
+                                ref={contentRef}
+                                className={`${cls.expandedContent} ${localExpanded ? cls.show : ''}`}
+                            >
+                                <div className={cls.expandedInner}>
+                                    {/* <div className={cls.expandedHeader}>
+                                        <h2 className={cls.expandedTitle}>{title}</h2>
+                                    </div>
+
+                                    <div className={cls.expandedDescription}>
+                                        {fullDescription || description}
+                                    </div> */}
+
+                                    {points && points.length > 0 && (
+                                        <div className={cls.expandedSection}>
+                                            {/* <h3 className={cls.expandedSectionTitle}>Key Results</h3> */}
+                                            <ul className={cls.pointsList}>
+                                                {points.map((point, index) => (
+                                                    <li key={index} className={cls.pointItem}>
+                                                        <ArrowStairsUp />
+                                                        <span>{point}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    )}
+
+                                    {teamMembers && teamMembers.length > 0 && (
+                                        <div className={cls.expandedSection}>
+                                            <h3 className={cls.expandedSectionTitle}>Outstaff Specialists</h3>
+                                            <div className={cls.teamGrid}>
+                                                {teamMembers.map((member, index) => (
+                                                    <div key={index} className={cls.teamMember}>
+                                                        {member}
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {techStack && techStack.length > 0 && (
+                                        <div className={cls.expandedSection}>
+                                            <h3 className={cls.expandedSectionTitle}>Tech Stack</h3>
+                                            <div className={cls.techStack}>
+                                                {techStack.map((tech, index) => (
+                                                    <div key={index} className={cls.techItem}>
+                                                        {tech}
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        )}
                         <button className={cls.exploreButton} onClick={handleExploreClick} disabled={!isActive}>
-                            Explore more
-                            <span className={cls.arrow}>→</span>
+                            {localExpanded && isMobile ? 'Show less' : 'Explore more'}
+                            <span className={cls.arrow}>{localExpanded && isMobile ? '↑' : '→'}</span>
                         </button>
                     </div>
+
+                    {/* Mobile Expanded Content */}
                 </div>
             </div>
             {isLast && <div style={{paddingRight: '180px'}}></div>}

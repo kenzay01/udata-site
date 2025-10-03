@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { SuccessStoriesItem } from './components/SuccessStoriesItem/SuccessStoriesItem';
 import { StoryModal } from './components/StoryModal/StoryModal';
 import cls from './SuccessStories.module.css';
-import { RedDogFish, Livetrend, RetailShake, SpaceShelf, Adeo, PerspektPerson, AdeoModal } from "@/utils/Logos";
+import { RedDogFish, Livetrend, RetailShake, SpaceShelf, Adeo, PerspektPerson, AdeoModal, AdeoPhone } from "@/utils/Logos";
 import { ReactIcon, Python, Energy, Postgres, AWS, Broom, Shell, Cloud, Golang, Lizer } from '@/utils/TechStack';
 import { UAflag, DEflag, FRflag, PLflag  } from '@/utils/Flags';
 
@@ -12,7 +12,8 @@ export const SuccessStories = () => {
     const [visibleItems, setVisibleItems] = useState<Set<number>>(new Set([0]));
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedStory, setSelectedStory] = useState<any>(null);
-
+    const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+    const [isMobile, setIsMobile] = useState(false);
 
     const containerRef = useRef<HTMLDivElement>(null);
     const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -131,7 +132,7 @@ export const SuccessStories = () => {
             metrics: ["$20-22", "On Going", "$7500 / month"],
             img: <Adeo />,
             imgModal: <AdeoModal />,
-            // cardColorBack: "black",
+            imgPhone: <AdeoPhone />,
             points: [
                 <>Unified <strong>5+</strong> tools into a single platform</>,
                 <>Automated <strong>80%</strong> of SMS delivery testing by filter tools</>,
@@ -176,6 +177,17 @@ export const SuccessStories = () => {
         }
     ];
 
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
     const checkVisibility = useCallback(() => {
         if (!containerRef.current) return;
 
@@ -207,19 +219,28 @@ export const SuccessStories = () => {
 
         checkVisibility();
 
-        container.addEventListener('scroll', checkVisibility);
+        const handleScroll = () => {
+            checkVisibility();
+            
+            // Close expanded item when scrolling on mobile
+            if (isMobile && expandedIndex !== null) {
+                setExpandedIndex(null);
+            }
+        };
+
+        container.addEventListener('scroll', handleScroll);
         window.addEventListener('resize', checkVisibility);
 
         return () => {
-            container.removeEventListener('scroll', checkVisibility);
+            container.removeEventListener('scroll', handleScroll);
             window.removeEventListener('resize', checkVisibility);
         };
-    }, [checkVisibility]);
+    }, [checkVisibility, isMobile, expandedIndex]);
 
     const handleStoryClick = (index: number) => {
         setActiveIndex(index);
         if (containerRef.current) {
-            const itemWidth = 662;
+            const itemWidth = isMobile ? 340 : 662;
             const scrollLeft = index * itemWidth + 50;
             containerRef.current.scrollTo({
                 left: scrollLeft,
@@ -229,8 +250,16 @@ export const SuccessStories = () => {
     };
 
     const handleExploreMore = (story: any) => {
-        setSelectedStory(story);
-        setIsModalOpen(true);
+        if (!isMobile) {
+            setSelectedStory(story);
+            setIsModalOpen(true);
+        }
+    };
+
+    const handleExpandChange = (index: number, expanded: boolean) => {
+        if (isMobile) {
+            setExpandedIndex(expanded ? index : null);
+        }
     };
 
     const setItemRef = (index: number) => (el: HTMLDivElement | null) => {
@@ -251,6 +280,9 @@ export const SuccessStories = () => {
                         isFirst={index === 0}
                         isLast={index === stories.length - 1}
                         ref={setItemRef(index)}
+                        isExpanded={expandedIndex === index}
+                        onExpandChange={(expanded) => handleExpandChange(index, expanded)}
+                        isMobile={isMobile}
                     />
                 ))}
             </div>

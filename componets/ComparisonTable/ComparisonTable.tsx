@@ -1,4 +1,5 @@
 import cls from "./ComparisonTable.module.css";
+import {ArrowRightIcon} from '@/utils/AtIcon'
 
 export const ComparisonTable = () => {
     const criteriaList = [
@@ -57,19 +58,26 @@ export const ComparisonTable = () => {
                     </div>
 
                     {/* UData Outstaff Card */}
-                    <div className={`${cls.comparisonCard} ${cls.highlighted}`}>
-                        <div className={cls.cardHeader}>
-                            <div className={cls.companyName}>UData <span>Outstaff</span></div>
+                    <div className={cls.udataCardContainer}>
+                        <div className={`${cls.comparisonCard} ${cls.highlighted}`}>
+                            <div className={cls.cardHeader}>
+                                <div className={cls.companyName}>UData <span>Outstaff</span></div>
+                            </div>
+                            <div className={cls.cardBody}>
+                                {udataValues.map((value, index) => (
+                                    <div key={index} className={cls.valueItem}>{value}</div>
+                                ))}
+                            </div>
                         </div>
-                        <div className={cls.cardBody}>
-                            {udataValues.map((value, index) => (
-                                <div key={index} className={cls.valueItem}>{value}</div>
-                            ))}
+                        <button className={cls.ctaButton}><ArrowRightIcon /></button>
+                        <div className={cls.backgroundAccent}>
+                        </div>
+                        <div className={cls.backgroundAccent2}>
                         </div>
                     </div>
 
                     {/* Internal Hiring Card */}
-                    <div className={cls.comparisonCard}>
+                    <div className={`${cls.comparisonCard} ${cls.internalCard}`}>
                         <div className={cls.cardHeader}>Internal Hiring</div>
                         <div className={cls.cardBody}>
                             {internalValues.map((value, index) => (

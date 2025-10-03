@@ -1,5 +1,4 @@
 .successStoriesItem {
-
     width: 662px;
     height: 531px;
     border-radius: 32px;
@@ -23,24 +22,25 @@
 
 .successStoriesItem.inactive {
     opacity: 0.5;
-    /* transform: scale(0.92); */
     z-index: 1;
     filter: grayscale(0.3) brightness(0.8);
 }
 
 .successStoriesItem:hover {
-    transform: scale(1.01);
+    /* transform: scale(1.01); */
     opacity: 1;
     filter: none;
 }
+
 .cardContent {
-    border-radius: 64px;
+    border-radius: 0 64px 0 0;
     overflow: hidden;
     background: #ffffff;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     height: 100%;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .header {
@@ -48,14 +48,14 @@
     background: #fff;
     padding: 24px 32px 32px 32px;
     color: white;
-    position: relative;
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     overflow: hidden;
 }
-.logoContainer{
+
+.logoContainer {
     position: absolute;
     top: 32px;
     right: 32px;
@@ -65,15 +65,13 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
-.imageContainer{
+
+.imageContainer {
     position: absolute;
     top: 0;
     left: 0;
     width: 662px;
     height: 100%;
-
-    /* overflow: hidden; */
-    /* z-index: 0; */
 }
 
 .headerTop {
@@ -121,55 +119,15 @@
     justify-content: center;
 }
 
-.logoContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.logo {
-    width: 60px;
-    height: 60px;
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    backdrop-filter: blur(10px);
-    position: relative;
-}
-
-.logoIcon {
-    width: 30px;
-    height: 30px;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 50%;
-    position: relative;
-}
-
-.logoIcon::before {
-    content: '';
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    width: 14px;
-    height: 14px;
-    background: #dc2626;
-    border-radius: 50%;
-}
-
 .companyTitle {
     font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
+    font-weight: 500;
     margin: 0;
     color: var(--secondary-color);
-    font-family: Montserrat;
-    font-weight: 500;
     font-size: 18px;
     line-height: 150%;
     letter-spacing: 1%;
     padding-bottom: 16px;
-
 }
 
 .whiteContent {
@@ -187,18 +145,12 @@
 
 .description {
     font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 400;
-    line-height: 1.6;
+    line-height: 150%;
     color: var(--light-secondary);
     margin: 0 0 24px 0;
-    font-family: Montserrat;
-    font-weight: 400;
-    font-style: Regular;
-    font-size: 12px;
-    line-height: 150%;
     letter-spacing: 1%;
-
 }
 
 .metrics {
@@ -208,27 +160,14 @@
     margin-bottom: 24px;
 }
 
-.metricItem {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-}
-
 .metricValue {
     font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 600;
-    margin-bottom: 4px;
     background: var(--main-color);
     color: #fff;
-    padding: 8px 16px;
+    padding: 10px 15px;
     border-radius: 20px;
-    font-size: 12px;
-    padding-top: 10px;
-    padding-right: 15px;
-    padding-bottom: 10px;
-    padding-left: 15px;
-
 }
 
 .exploreButton {
@@ -255,11 +194,11 @@
     color: white;
     transform: translateY(-2px);
 }
+
 .exploreButton:disabled {
     background: #e0e0e0;
     border-color: #e0e0e0;
     color: #a0a0a0;
-    /* cursor: not-allowed; */
     transform: none;
 }
 
@@ -279,8 +218,8 @@
 .successStoriesItem.inactive .header {
     background: #9ca3af;
 }
+
 .successStoriesItem.inactive .storyImage {
-    /* display: none; */
     filter: grayscale(1) brightness(0.7);
 }
 
@@ -303,26 +242,224 @@
     color: #666;
 }
 
+.expandedContent {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    background: #ffffff;
+}
+
+.expandedContent.show {
+    max-height: 2000px;
+}
+
+
+.expandedHeader {
+    margin-bottom: 20px;
+}
+
+.expandedTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.3;
+    color: var(--secondary-color);
+    margin: 0;
+}
+
+.expandedDescription {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--light-secondary);
+    margin-bottom: 24px;
+}
+
+.expandedSection {
+    margin-bottom: 24px;
+}
+
+.expandedSectionTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--secondary-color);
+    margin: 0 0 12px 0;
+}
+
+.pointsList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pointItem {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--light-secondary);
+    margin-bottom: 12px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    background: linear-gradient(90deg, #F6F6F8, #ffffff);
+}
+
+.teamGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.teamMember {
+    display: inline-block;
+    padding: 10px 14px;
+    border: 2px solid #D9D9D9;
+    border-radius: 50px;
+    background: #F6F6F8;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    line-height: 100%;
+}
+
+.techStack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.techItem {
+    display: inline-flex;
+    align-items: center;
+}
+
 @media (max-width: 768px) {
     .successStoriesItem {
         min-width: 320px;
         max-width: 320px;
+        height: 480px;
     }
-    
-    .header {
+    .cardContent {
+        border-top-left-radius: 64px;
+        border-top-right-radius: 64px;
+    }
+
+    .successStoriesItem.expanded {
+        height: auto;
+    }
+    /* .successStoriesItem{
+        height: 320px;
+    } */
+
+    /* .cardContent { */
+        /* border-radius: 24px; */
+    /* } */
+    .exploreButton{
+        margin-top: auto;
+    }
+    .header{
+        max-height: 200px;
+        min-height: 200px;
+    }
+    .headerTop {
         padding: 20px 24px 24px 24px;
+        height: 100px;
     }
-    
+    .tagContainer{
+        top: 20px;
+        left: 24px;
+    }
+    .tagContainer .flagTag, .tagContainer .countryTag{
+        height: 28px;
+        font-size: 10px;
+        padding: 4px 8px;
+    }
+    .logoContainer{
+        top: 55%;
+        left: 43%;
+        /* transform: none;
+        left: auto; */
+        zoom: 0.75;
+    }
+    .imageContainer{
+        width: 100px;
+        height: 100px;
+        zoom: 0.65;
+        /* top: 20px; */
+        /* margin-right: 20px; */
+    }
+
     .whiteContent {
-        padding: 24px;
+        padding: 20px;
+        height: auto;
+        min-height: 250px;
+        position: relative;
+        border-top-right-radius: 40px;
+        /* border-radius: 100px; */
+        display: flex;
+        flex-direction: column;
     }
     
     .companyTitle {
-        font-size: 24px;
+        font-size: 16px;
+        font-weight: 600;
+
+    }
+
+    .description {
+        font-size: 12px;
+        margin-bottom: 20px;
+        /* margin-bottom: auto; */
     }
     
     .metrics {
-        flex-direction: column;
-        gap: 12px;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 16px;
+    }
+
+    .metricValue {
+        font-size: 11px;
+        padding: 8px 12px;
+    }
+
+    .exploreButton {
+        font-size: 13px;
+        padding: 10px 20px;
+        /* margin-top: auto; */
+        /* margin-top: 10px; */
+    }
+
+    /* .expandedInner {
+        padding: 20px;
+    } */
+
+    .expandedTitle {
+        font-size: 20px;
+    }
+
+    .expandedDescription {
+        font-size: 13px;
+    }
+
+    .expandedSectionTitle {
+        font-size: 14px;
+    }
+
+    .pointItem {
+        font-size: 11px;
+        padding: 10px 12px;
+        display: flex;
+        align-items: center;
+    }
+
+    .teamMember {
+        font-size: 11px;
+        padding: 8px 12px;
     }
 }

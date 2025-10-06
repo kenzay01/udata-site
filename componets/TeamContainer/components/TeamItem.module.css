@@ -86,7 +86,7 @@
   margin-right: 200px;
   background: var(--main-color);
   border-radius: 20px;
-  padding: 20px 16px;
+  padding: 0px;
   z-index: 5;
 }
 

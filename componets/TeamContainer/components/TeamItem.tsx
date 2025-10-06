@@ -10,7 +10,7 @@ interface TeamItemProps {
   industries: string[];
   availability: string;
   image: string;
-  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  icon: React.ComponentProps<typeof Image>["src"];
 }
 
 export const TeamItem = ({ title, experience, techStack, industries, availability, image, icon }: TeamItemProps) => {
@@ -50,7 +50,7 @@ export const TeamItem = ({ title, experience, techStack, industries, availabilit
       <div className={cls.imageContainer}>
         <Image src={image} alt="Profile" className={cls.profileImage} width={300} height={300} />
         <div className={cls.iconContainer}>
-          {icon && React.createElement(icon, { className: cls.icon })}
+          <Image src={icon} alt="Icon" width={100} height={100} />
         </div>
       </div>
       <button className={cls.addButton}>

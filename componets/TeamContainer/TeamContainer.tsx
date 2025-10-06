@@ -1,6 +1,9 @@
 import cls from "./TeamContainer.module.css";
 import { TeamItem } from "./components/TeamItem";
 import { FirstTeamIcon } from "@/utils/TeamIcons";
+import firstTeamIcon from "@/public/team/Icon.svg"
+import secondTeamIcon from "@/public/team/Icon-1.svg"
+import thirdTeamIcon from "@/public/team/Icon-2.svg"
 
 export const TeamContainer = () => {
   const teamData = [
@@ -11,7 +14,7 @@ export const TeamContainer = () => {
       industries: ["Ecommerce", "EdTech"],
       availability: "40h per week",
       image: "/team/teammate1.png",
-      icon: FirstTeamIcon, 
+      icon: firstTeamIcon,
     },
     {
       title: "Backend Senior Developer",
@@ -20,7 +23,7 @@ export const TeamContainer = () => {
       industries: ["Crypto", "FinTech"],
       availability: "20h per week",
       image: "/team/teammate2.png",
-      icon: FirstTeamIcon,
+      icon: secondTeamIcon,
     },
     {
       title: "Frontend Senior Developer",
@@ -29,7 +32,7 @@ export const TeamContainer = () => {
       industries: ["Ecommerce", "EdTech", "Retail", "FinTech"],
       availability: "20h per week",
       image: "/team/teammate3.png",
-      icon: FirstTeamIcon, 
+      icon: thirdTeamIcon,
     },
   ];
 

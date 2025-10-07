@@ -1,7 +1,10 @@
+"use client";
+
 import cls from "./TeamItem.module.css";
 import Image from "next/image";
 import { BiPlus } from "react-icons/bi";
 import React from "react";
+import Link from "next/link";
 
 interface TeamItemProps {
   title: string;
@@ -14,6 +17,24 @@ interface TeamItemProps {
 }
 
 export const TeamItem = ({ title, experience, techStack, industries, availability, image, icon }: TeamItemProps) => {
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+      e.preventDefault();
+      
+      if (href.startsWith('#')) {
+        const targetId = href.substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+          const headerHeight = (document.querySelector(`.${cls.header}`) as HTMLElement)?.offsetHeight || 80;
+          const targetPosition = targetElement.offsetTop - headerHeight - 20;
+          
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }
+    };
   return (
     <div className={cls.card}>
       <div className={cls.content}>
@@ -53,9 +74,9 @@ export const TeamItem = ({ title, experience, techStack, industries, availabilit
           <Image src={icon} alt="Icon" width={100} height={100} />
         </div>
       </div>
-      <button className={cls.addButton}>
+      <Link href="/#pricing" onClick={(e) => handleSmoothScroll(e, "#pricing")} className={cls.addButton}>
         <BiPlus size={24} />
-      </button>
+      </Link>
     </div>
   );
 };

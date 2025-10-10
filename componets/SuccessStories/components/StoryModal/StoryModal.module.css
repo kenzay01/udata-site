@@ -11,6 +11,33 @@
     justify-content: center;
     z-index: 1000;
     padding: 20px;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modalOverlay.closing {
+    animation: fadeOut 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        backdrop-filter: blur(0px);
+    }
+    to {
+        opacity: 10;
+        backdrop-filter: blur(10px);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        backdrop-filter: blur(10px);
+    }
+    to {
+        opacity: 0;
+        backdrop-filter: blur(0px);
+    }
 }
 
 .modalContent {
@@ -311,6 +338,10 @@
   border: 1px solid var(--light-gray);
   color: var(--secondary-gray);
 }
+
+
+
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
     .modalOverlay {

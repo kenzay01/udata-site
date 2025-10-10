@@ -1,10 +1,9 @@
 'use client';
-import React from 'react';
 import cls from './StoryModal.module.css';
-// import { X } from 'lucide-react';
 import {CloseIcon, ArrowStairsUp} from "@/utils/MenuIcon";
 import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 interface StoryModalProps {
     isOpen: boolean;
@@ -28,12 +27,44 @@ interface StoryModalProps {
 }
 
 export const StoryModal: React.FC<StoryModalProps> = ({ isOpen, onClose, story }) => {
+    const [isClosing, setIsClosing] = useState(false);
+
+    const handleClose = () => {
+        setIsClosing(true);
+        setTimeout(() => {
+            setIsClosing(false);
+            onClose();
+        }, 300);
+    };
+    
+    useEffect(() => {
+        if (isOpen) {
+            const scrollY = window.scrollY;
+            document.body.style.position = "fixed";
+            document.body.style.top = `-${scrollY}px`;
+            document.body.style.width = "100%";
+            document.body.style.overflow = "hidden";
+
+            return () => {
+                const scrollYToRestore = Math.abs(parseInt(document.body.style.top || '0'));
+                document.body.style.position = "";
+                document.body.style.top = "";
+                document.body.style.width = "";
+                document.body.style.overflow = "";
+                window.scrollTo({
+                    top: scrollYToRestore,
+                    behavior: 'instant'
+                });
+            };
+        }
+    }, [isOpen]);  
+    
     if (!isOpen || !story) return null;
 
     return (
-        <div className={cls.modalOverlay} onClick={onClose}>
-            <div className={cls.modalContent} onClick={(e) => e.stopPropagation()}>
-                <button className={cls.closeButton} onClick={onClose}>
+        <div className={`${cls.modalOverlay} ${isClosing ? cls.closing : ''}`} onClick={handleClose}>
+            <div className={`${cls.modalContent} ${isClosing ? cls.closing : ''}`} onClick={(e) => e.stopPropagation()}>
+                <button className={cls.closeButton} onClick={handleClose}>
                     <CloseIcon />
                 </button>
                 
@@ -106,58 +137,11 @@ export const StoryModal: React.FC<StoryModalProps> = ({ isOpen, onClose, story }
                                 <Link rel="noopener noreferrer"
             target="_blank"
             href="https://calendly.com/dmytro-udata/meet-with-me" onClick={() => {
-                                    onClose();
+                                    handleClose();
                                 }}>Request a Call</Link>
                             </div>
                         </div>
                     </div>                
-                    {/* White content section */}
-                    {/* <div className={cls.modalBody}>
-                        <h2 className={cls.modalTitle}>{story.title}</h2>
-                        
-                        <div className={cls.description}>
-                            {story.fullDescription}
-                        </div>
-                        
-                        <div className={cls.metrics}>
-                            {story.metrics.map((metric, index) => (
-                                <span className={cls.metricValue} key={index}>{metric}</span>
-                            ))}
-                        </div>
-                        <div className={cls.section}>
-                            <h3 className={cls.sectionTitle}>Key Results</h3>
-                            <ul className={cls.pointsList}>
-                                {story.points.map((point, index) => (
-                                    <li key={index} className={cls.pointItem}>
-                                        {point}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                        <div className={cls.section}>
-                            <h3 className={cls.sectionTitle}>Team</h3>
-                            <div className={cls.teamGrid}>
-                                {story.teamMembers.map((member, index) => (
-                                    <div key={index} className={cls.teamMember}>
-                                        {member}
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                        
-                        {story.techStack && story.techStack.length > 0 && (
-                            <div className={cls.section}>
-                                <h3 className={cls.sectionTitle}>Tech Stack</h3>
-                                <div className={cls.techStack}>
-                                    {story.techStack.map((tech, index) => (
-                                        <span key={index} className={cls.techItem}>
-                                            {tech}
-                                        </span>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
-                    </div> */}
                 </div>
             </div>
         </div>

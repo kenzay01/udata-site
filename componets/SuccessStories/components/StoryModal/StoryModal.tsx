@@ -34,7 +34,7 @@ export const StoryModal: React.FC<StoryModalProps> = ({ isOpen, onClose, story }
         setTimeout(() => {
             setIsClosing(false);
             onClose();
-        }, 300);
+        }, 150);
     };
     
     useEffect(() => {

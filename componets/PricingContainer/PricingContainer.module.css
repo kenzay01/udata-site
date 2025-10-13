@@ -297,7 +297,7 @@
         font-size: 13px;
     }
     .requestCall{
-        font-size: 12px;
+        font-size: 13px;
         padding: 8px 12px;
     }
     .choiceSection {
@@ -305,6 +305,15 @@
         /* align-items: flex-start; */
         gap: 15px;
         height: auto;
+    }
+    .pricingSection{
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+        justify-content: center;
+    }
+    .pricingInfo{
+        align-items: center;
     }
     
     .choiceLabel {
@@ -337,7 +346,7 @@ letter-spacing: 0%;
         text-align: center;
     }
     .requestCall{
-        font-size: 12px;
+        font-size: 13px;
         padding: 8px 12px;
     }
 }

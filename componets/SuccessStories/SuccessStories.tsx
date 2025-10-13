@@ -222,7 +222,6 @@ export const SuccessStories = () => {
         const handleScroll = () => {
             checkVisibility();
             
-            // Close expanded item when scrolling on mobile
             if (isMobile && expandedIndex !== null) {
                 setExpandedIndex(null);
             }

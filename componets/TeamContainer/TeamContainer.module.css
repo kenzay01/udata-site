@@ -1,15 +1,52 @@
-.teamContainer{
+.mobileContainer {
+  display: none;
+}
+
+.desktopContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .desktopContainer {
+    display: none;
+  }
+
+  .mobileContainer {
     display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 40px;
-    max-width: 1200px;
-    align-self: center;
-    margin: 0 auto;
-}
-@media (max-width: 600px) {
-    .teamContainer{
-        flex-direction: column;
-        gap: 20px;
-    }
+    align-items: flex-start;
+    min-height: 600px;
+    padding: 20px;
+  }
+
+  .stackContainer {
+    position: relative;
+    width: 100%;
+    max-width: 320px;
+    height: 500px;
+    touch-action: pan-y;
+  }
+
+  .stackCard {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 1;
+    transform: translateY(12px) scale(0.95);
+  }
+
+  .stackCard.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    /* filter: grayscale(0); */
+  }
 }

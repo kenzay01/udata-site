@@ -14,9 +14,16 @@ export const SuccessStories = () => {
     const [selectedStory, setSelectedStory] = useState<any>(null);
     const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
     const [isMobile, setIsMobile] = useState(false);
+    const [isDragging, setIsDragging] = useState(false);
+    const [startX, setStartX] = useState(0);
+    const [scrollLeft, setScrollLeft] = useState(0);
+    const [velocity, setVelocity] = useState(0);
+    const [lastX, setLastX] = useState(0);
+    const [lastTime, setLastTime] = useState(0);
 
     const containerRef = useRef<HTMLDivElement>(null);
     const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+    const rafRef = useRef<number | null>(null);
     
     const stories = [
         {
@@ -236,6 +243,12 @@ export const SuccessStories = () => {
         };
     }, [checkVisibility, isMobile, expandedIndex]);
 
+    useEffect(() => {
+        if (!isMobile && containerRef.current) {
+            containerRef.current.style.cursor = 'grab';
+        }
+    }, [isMobile]);
+
     const handleStoryClick = (index: number) => {
         setActiveIndex(index);
         if (containerRef.current) {
@@ -265,10 +278,83 @@ export const SuccessStories = () => {
         itemRefs.current[index] = el;
     };
 
+    const handleMouseDown = (e: React.MouseEvent) => {
+        if (isMobile || !containerRef.current) return;
+        
+        setIsDragging(true);
+        setStartX(e.pageX - containerRef.current.offsetLeft);
+        setScrollLeft(containerRef.current.scrollLeft);
+        setLastX(e.pageX);
+        setLastTime(Date.now());
+        setVelocity(0);
+        containerRef.current.style.cursor = 'grabbing';
+        containerRef.current.style.userSelect = 'none';
+        
+        if (rafRef.current) {
+            cancelAnimationFrame(rafRef.current);
+        }
+    };
+
+    const handleMouseLeave = () => {
+        if (!isMobile && containerRef.current) {
+            setIsDragging(false);
+            containerRef.current.style.cursor = 'grab';
+        }
+    };
+
+    const handleMouseUp = () => {
+        if (!isMobile && containerRef.current) {
+            setIsDragging(false);
+            containerRef.current.style.cursor = 'grab';
+            
+            if (Math.abs(velocity) > 0.5) {
+                let currentVelocity = velocity;
+                const applyInertia = () => {
+                    if (!containerRef.current || Math.abs(currentVelocity) < 0.1) return;
+                    
+                    containerRef.current.scrollLeft += currentVelocity;
+                    currentVelocity *= 0.95;
+                    
+                    rafRef.current = requestAnimationFrame(applyInertia);
+                };
+                applyInertia();
+            }
+        }
+    };
+
+    const handleMouseMove = (e: React.MouseEvent) => {
+        if (!isDragging || isMobile || !containerRef.current) return;
+        
+        e.preventDefault();
+        
+        const currentX = e.pageX;
+        const currentTime = Date.now();
+        const deltaX = currentX - lastX;
+        const deltaTime = currentTime - lastTime;
+        
+        if (deltaTime > 0) {
+            setVelocity(deltaX / deltaTime);
+        }
+        
+        setLastX(currentX);
+        setLastTime(currentTime);
+        
+        const x = currentX - containerRef.current.offsetLeft;
+        const walk = (x - startX);
+        containerRef.current.scrollLeft = scrollLeft - walk;
+    };
+
     return (
         <section className={cls.successStories} id="success-stories">
             <h2 className={cls.title}><span>Success</span> Stories</h2>
-            <div className={cls.items} ref={containerRef}>
+            <div 
+                className={cls.items} 
+                ref={containerRef}
+                onMouseDown={handleMouseDown}
+                onMouseLeave={handleMouseLeave}
+                onMouseUp={handleMouseUp}
+                onMouseMove={handleMouseMove}
+            >
                 {stories.map((story, index) => (
                     <SuccessStoriesItem 
                         key={story.id} 
@@ -282,6 +368,7 @@ export const SuccessStories = () => {
                         isExpanded={expandedIndex === index}
                         onExpandChange={(expanded) => handleExpandChange(index, expanded)}
                         isMobile={isMobile}
+                        isDragging={isDragging}
                     />
                 ))}
             </div>

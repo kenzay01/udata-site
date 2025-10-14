@@ -43,57 +43,98 @@ export const ComparisonTable = () => {
     ];
 
     return (
+        // <section className={cls.comparisonTable} id="comparison-table">
+        //     <h1><span>Comparison</span> Table</h1>
+        //     <div className={cls.comparisonTableContent}>
+        //         <div className={cls.comparisonCards}>
+        //             {/* Criteria Card */}
+                    // <div className={cls.criteriaCard}>
+                    //     <div className={cls.cardHeader}>Criteria</div>
+                    //     <div className={cls.cardBody}>
+                    //         {criteriaList.map((criteria, index) => (
+                    //             <div key={index} className={cls.criteriaItem}>{criteria}</div>
+                    //         ))}
+                    //     </div>
+                    // </div>
+
+        //             {/* UData Outstaff Card */}
+                    // <div className={cls.udataCardContainer}>
+                    //     <div className={`${cls.comparisonCard} ${cls.highlighted}`}>
+                    //         <div className={cls.cardHeader}>
+                    //             <div className={cls.companyName}>UData <span>Outstaff</span></div>
+                    //         </div>
+                    //         <div className={cls.cardBody}>
+                    //             {udataValues.map((value, index) => (
+                    //                 <div key={index} className={cls.valueItem}>{value}</div>
+                    //             ))}
+                    //         </div>
+                    //     </div>
+                    //     <button className={cls.ctaButton}><ArrowRightIcon /></button>
+                    //     <div className={cls.backgroundAccent}>
+                    //     </div>
+                    //     <div className={cls.backgroundAccent2}>
+                    //     </div>
+                    // </div>
+
+        //             {/* Internal Hiring Card */}
+                    // <div className={`${cls.comparisonCard} ${cls.internalCard}`}>
+                    //     <div className={cls.cardHeader}>Internal Hiring</div>
+                    //     <div className={cls.cardBody}>
+                    //         {internalValues.map((value, index) => (
+                    //             <div key={index} className={cls.valueItem}>{value}</div>
+                    //         ))}
+                    //     </div>
+                    // </div>
+
+        //             {/* Freelance Platforms Card */}
+                    // <div className={`${cls.comparisonCard} ${cls.freelanceCard}`}>
+                    //     <div className={cls.cardHeader}>Freelance Platforms</div>
+                    //     <div className={cls.cardBody}>
+                    //         {freelanceValues.map((value, index) => (
+                    //             <div key={index} className={cls.valueItem}>{value}</div>
+                    //         ))}
+                    //     </div>
+                    // </div>
+        //         </div>
+        //     </div>
+        // </section>
         <section className={cls.comparisonTable} id="comparison-table">
             <h1><span>Comparison</span> Table</h1>
             <div className={cls.comparisonTableContent}>
-                <div className={cls.comparisonCards}>
-                    {/* Criteria Card */}
-                    <div className={cls.criteriaCard}>
-                        <div className={cls.cardHeader}>Criteria</div>
-                        <div className={cls.cardBody}>
-                            {criteriaList.map((criteria, index) => (
-                                <div key={index} className={cls.criteriaItem}>{criteria}</div>
-                            ))}
-                        </div>
-                    </div>
+                <div className={cls.comparisonCard}>
+                    <div className={cls.cardHeader}>
 
-                    {/* UData Outstaff Card */}
-                    <div className={cls.udataCardContainer}>
-                        <div className={`${cls.comparisonCard} ${cls.highlighted}`}>
-                            <div className={cls.cardHeader}>
-                                <div className={cls.companyName}>UData <span>Outstaff</span></div>
-                            </div>
-                            <div className={cls.cardBody}>
-                                {udataValues.map((value, index) => (
-                                    <div key={index} className={cls.valueItem}>{value}</div>
-                                ))}
-                            </div>
-                        </div>
-                        <button className={cls.ctaButton}><ArrowRightIcon /></button>
-                        <div className={cls.backgroundAccent}>
-                        </div>
-                        <div className={cls.backgroundAccent2}>
-                        </div>
                     </div>
-
-                    {/* Internal Hiring Card */}
-                    <div className={`${cls.comparisonCard} ${cls.internalCard}`}>
-                        <div className={cls.cardHeader}>Internal Hiring</div>
-                        <div className={cls.cardBody}>
-                            {internalValues.map((value, index) => (
-                                <div key={index} className={cls.valueItem}>{value}</div>
-                            ))}
-                        </div>
+                    <div className={cls.cardBody}>
+                        {criteriaList.map((criteria, index) => (
+                            <div key={index} className={cls.criteriaItem}>{criteria}</div>
+                        ))}
                     </div>
-
-                    {/* Freelance Platforms Card */}
-                    <div className={`${cls.comparisonCard} ${cls.freelanceCard}`}>
-                        <div className={cls.cardHeader}>Freelance Platforms</div>
-                        <div className={cls.cardBody}>
-                            {freelanceValues.map((value, index) => (
-                                <div key={index} className={cls.valueItem}>{value}</div>
-                            ))}
-                        </div>
+                </div>
+                <div className={`${cls.comparisonCard} ${cls.highlighted}`}>
+                    <div className={cls.cardHeader}>
+                        <div className={cls.companyName}>UData <span>Outstaff</span></div>
+                    </div>
+                    <div className={cls.cardBody}>
+                        {udataValues.map((value, index) => (
+                            <div key={index} className={cls.companyItem}>{value}</div>
+                        ))}
+                    </div>
+                </div>
+                <div className={`${cls.comparisonCard}`}>
+                    <div className={cls.cardHeader}>Internal Hiring</div>
+                    <div className={cls.cardBody}>
+                        {internalValues.map((value, index) => (
+                            <div key={index} className={cls.internalItem}>{value}</div>
+                        ))}
+                    </div>
+                </div>
+                <div className={`${cls.comparisonCard}`}>
+                    <div className={cls.cardHeader}>Freelance Platforms</div>
+                    <div className={cls.cardBody}>
+                        {freelanceValues.map((value, index) => (
+                            <div key={index} className={cls.freelanceItem}>{value}</div>
+                        ))}
                     </div>
                 </div>
             </div>

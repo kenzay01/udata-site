@@ -38,6 +38,9 @@
   color: var(--secondary-color);
 }
 @media (max-width: 600px) {
+    .mainBanner{
+      padding-bottom: 1rem;
+    }
     .mainBanner h1 {
       font-family: Montserrat;
       font-weight: 500;

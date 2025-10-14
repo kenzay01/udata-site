@@ -23,28 +23,18 @@
     display: flex;
     justify-content: center;
     width: 100%;
-}
-
-.comparisonCards {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0;
-    width: 100%;
-    /* box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); */
-    border-radius: 16px;
-    overflow: hidden;
-}
-
-.criteriaCard,
-.comparisonCard {
     background: #fff;
+    border-radius: 32px;
+}
+
+
+.comparisonCard {
+    background: transparent;
     display: flex;
     flex-direction: column;
-    /* min-height: 400px; */
     width: 250px;
-    height: 375px;
     padding: 8px 0;
+
 }
 
 .criteriaCard {
@@ -54,17 +44,16 @@
     border-bottom-left-radius: 32px;
 }
 
-.comparisonCard.highlighted {
+/* .comparisonCard.highlighted {
     background: var(--main-color);
     color: white;
-    /* width: 120%;
-    height: 120%; */
     height: 425px;
     width: 350px;
     border-radius: 32px;
-}
+} */
 
 .cardHeader {
+    flex: 1;
     padding: 24px 16px;
     font-weight: 600;
     font-size: 16px;
@@ -83,9 +72,9 @@
     text-align: center;
 }
 .highlighted .cardHeader {
-    padding-top: 40px;
-    font-size: 32px;
-    color: #fff;
+    /* padding-top: 40px; */
+    font-size: 24px;
+    color: var(--main-color);
 }
 .criteriaCard .cardHeader {
     display: flex;
@@ -104,14 +93,22 @@
 
 .companyName {
     font-weight: 700;
+    /* text-decoration: underline; */
+    /* text-underline-offset: 6px; */
+    /* text-decoration-thickness: 3px; */
+    position: relative;
 }
-.companyName span {
-    text-decoration: underline;
-    text-underline-offset: 6px;
-    text-decoration-thickness: 3px;
-
+.companyName::before{
+    content: '';
+    display: block;
+    width: 110%;
+    height: 4px;
+    background: var(--main-color);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translate(-5%, 50%);
 }
-
 .cardBody {
     display: flex;
     flex-direction: column;
@@ -119,11 +116,14 @@
     gap: 2px;
     height: 100%;
     margin-bottom: 20px;
-    gap: 20px;
+    gap: 10px;
+    flex: 4;
 }
 
 .criteriaItem,
-.valueItem {
+.companyItem,
+.internalItem,
+.freelanceItem {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -137,7 +137,29 @@
     letter-spacing: 1%;
     text-align: center;
     color: var(--light-secondary);
+    padding: 10px 0;
+    /* background-color: black; */
+}
+.companyItem{
+    background-color: var(--main-color);
+    color: #fff;
+}
+.criteriaItem{
+    background: linear-gradient(to right, #fff6f3 0%, #ffbba2 100%);
+    padding-left: 16px;
+    border-bottom-left-radius: 16px;
+    border-top-left-radius: 16px;
 
+}
+.internalItem{
+    background: linear-gradient(to left, #fff3ef 0%, #ffbba2 100%);
+    /* padding-left: 16px; */
+}
+.freelanceItem{
+    background-color: #fff3ef;
+    padding-right: 16px;
+    border-bottom-right-radius: 16px;
+    border-top-right-radius: 16px;
 }
 
 .criteriaItem {
@@ -159,7 +181,7 @@
     font-weight: 500;
 }
 
-.highlighted .valueItem {
+/* .highlighted .valueItem {
     color: white;
     font-weight: 700;
     font-style: Bold;
@@ -167,10 +189,10 @@
     line-height: 150%;
     letter-spacing: 1%;
     text-align: center;
-}
-.highlighted .cardBody{
+} */
+/* .highlighted .cardBody{
     margin-bottom: 40px;
-}
+} */
 .freelanceCard{
     border-top-right-radius: 32px;
     border-bottom-right-radius: 32px;

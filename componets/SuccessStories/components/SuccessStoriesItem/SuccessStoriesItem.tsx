@@ -9,7 +9,7 @@ interface SuccessStoriesItemProps {
     country: string;
     flag: React.ReactNode;
     isActive?: boolean;
-    onClick?: () => void;
+    onClick: () => void;
     onExploreMore?: () => void;
     isFirst?: boolean;
     isLast?: boolean;
@@ -27,6 +27,7 @@ interface SuccessStoriesItemProps {
     onExpandChange?: (expanded: boolean) => void;
     isMobile?: boolean;
     imgPhone?: StaticImageData | React.ReactNode;
+    isDragging: boolean;
 }
 
 export const SuccessStoriesItem = forwardRef<HTMLDivElement, SuccessStoriesItemProps>(({ 
@@ -50,7 +51,8 @@ export const SuccessStoriesItem = forwardRef<HTMLDivElement, SuccessStoriesItemP
     isExpanded = false,
     onExpandChange,
     isMobile = false,
-    imgPhone
+    imgPhone,
+    isDragging
 }, ref) => {
     const [localExpanded, setLocalExpanded] = useState(false);
     const contentRef = useRef<HTMLDivElement>(null);
@@ -61,14 +63,18 @@ export const SuccessStoriesItem = forwardRef<HTMLDivElement, SuccessStoriesItemP
 
     const handleExploreClick = (e: React.MouseEvent) => {
         e.stopPropagation();
-        
-        if (isMobile) {
-            const newState = !localExpanded;
-            setLocalExpanded(newState);
-            onExpandChange?.(newState);
-        } else {
-            onExploreMore?.();
-        }
+        if (isDragging) return;
+        setTimeout(() => {
+            if (isDragging) return;
+            
+            if (isMobile) {
+                const newState = !localExpanded;
+                setLocalExpanded(newState);
+                onExpandChange?.(newState);
+            } else {
+                onExploreMore?.();
+            }
+        }, 200);
     };
 
     const handleClose = (e: React.MouseEvent) => {
@@ -83,7 +89,14 @@ export const SuccessStoriesItem = forwardRef<HTMLDivElement, SuccessStoriesItemP
             <div 
                 ref={ref}
                 className={`${cls.successStoriesItem} ${isActive ? cls.active : cls.inactive} ${localExpanded && isMobile ? cls.expanded : ''}`}
-                onClick={onClick}
+                onClick={(e)=>{
+                    if (isActive){
+                        handleExploreClick(e);
+                    } else{
+                        onClick();
+                    }
+                }
+            }
             >
                 <div className={cls.cardContent}>
                     <div className={cls.header} style={{ backgroundColor: cardColorBack }}>

@@ -15,3 +15,20 @@ export const ArrowRightIcon = (props: React.SVGProps<SVGSVGElement>) => {
 
     )
 }
+
+export const ArrowsIcon = (props: React.SVGProps<SVGSVGElement>) => {
+    return (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.24271 10.3707L4.24271 18.856L12.728 18.856" stroke="#E95D2C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M10.3712 4.24369L18.8565 4.24369L18.8565 12.729" stroke="#E95D2C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+
+    )
+}
+export const ArrowsClosedIcon = ( props: React.SVGProps<SVGSVGElement>) => {
+    return (<svg width="22" height="23" viewBox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M9.55797 21.767L9.55797 13.2817L1.51234 13.2817" stroke="#E95D2C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M20.255 10.4848L12.2093 10.4848L12.2093 1.99955" stroke="#E95D2C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+)
+}

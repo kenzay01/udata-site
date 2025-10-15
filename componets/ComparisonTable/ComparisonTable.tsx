@@ -1,7 +1,12 @@
+"use client";
 import cls from "./ComparisonTable.module.css";
-import {ArrowRightIcon} from '@/utils/AtIcon'
+import { ArrowsIcon, ArrowsClosedIcon } from '@/utils/AtIcon';
+import { useState } from 'react';
+
 
 export const ComparisonTable = () => {
+    const [isExpanded, setIsExpanded] = useState(false);
+
     const criteriaList = [
         "Team Setup",
         "Upfront Costs", 
@@ -43,68 +48,11 @@ export const ComparisonTable = () => {
     ];
 
     return (
-        // <section className={cls.comparisonTable} id="comparison-table">
-        //     <h1><span>Comparison</span> Table</h1>
-        //     <div className={cls.comparisonTableContent}>
-        //         <div className={cls.comparisonCards}>
-        //             {/* Criteria Card */}
-                    // <div className={cls.criteriaCard}>
-                    //     <div className={cls.cardHeader}>Criteria</div>
-                    //     <div className={cls.cardBody}>
-                    //         {criteriaList.map((criteria, index) => (
-                    //             <div key={index} className={cls.criteriaItem}>{criteria}</div>
-                    //         ))}
-                    //     </div>
-                    // </div>
-
-        //             {/* UData Outstaff Card */}
-                    // <div className={cls.udataCardContainer}>
-                    //     <div className={`${cls.comparisonCard} ${cls.highlighted}`}>
-                    //         <div className={cls.cardHeader}>
-                    //             <div className={cls.companyName}>UData <span>Outstaff</span></div>
-                    //         </div>
-                    //         <div className={cls.cardBody}>
-                    //             {udataValues.map((value, index) => (
-                    //                 <div key={index} className={cls.valueItem}>{value}</div>
-                    //             ))}
-                    //         </div>
-                    //     </div>
-                    //     <button className={cls.ctaButton}><ArrowRightIcon /></button>
-                    //     <div className={cls.backgroundAccent}>
-                    //     </div>
-                    //     <div className={cls.backgroundAccent2}>
-                    //     </div>
-                    // </div>
-
-        //             {/* Internal Hiring Card */}
-                    // <div className={`${cls.comparisonCard} ${cls.internalCard}`}>
-                    //     <div className={cls.cardHeader}>Internal Hiring</div>
-                    //     <div className={cls.cardBody}>
-                    //         {internalValues.map((value, index) => (
-                    //             <div key={index} className={cls.valueItem}>{value}</div>
-                    //         ))}
-                    //     </div>
-                    // </div>
-
-        //             {/* Freelance Platforms Card */}
-                    // <div className={`${cls.comparisonCard} ${cls.freelanceCard}`}>
-                    //     <div className={cls.cardHeader}>Freelance Platforms</div>
-                    //     <div className={cls.cardBody}>
-                    //         {freelanceValues.map((value, index) => (
-                    //             <div key={index} className={cls.valueItem}>{value}</div>
-                    //         ))}
-                    //     </div>
-                    // </div>
-        //         </div>
-        //     </div>
-        // </section>
         <section className={cls.comparisonTable} id="comparison-table">
             <h1><span>Comparison</span> Table</h1>
             <div className={cls.comparisonTableContent}>
                 <div className={cls.comparisonCard}>
-                    <div className={cls.cardHeader}>
-
-                    </div>
+                    <div className={cls.cardHeader}></div>
                     <div className={cls.cardBody}>
                         {criteriaList.map((criteria, index) => (
                             <div key={index} className={cls.criteriaItem}>{criteria}</div>
@@ -136,6 +84,56 @@ export const ComparisonTable = () => {
                             <div key={index} className={cls.freelanceItem}>{value}</div>
                         ))}
                     </div>
+                </div>
+            </div>
+            <div className={cls.comparisonTableContentMobile}>
+                <div className={cls.comparisonCard}>
+                    <div className={cls.cardBody}>
+                        {criteriaList.map((criteria, index) => (
+                            <div key={index} className={cls.criteriaItem}>{criteria}</div>
+                        ))}
+                    </div>
+                </div>
+                <div className={cls.udataCard}>
+                    <div className={`${cls.udataCardContainer} ${isExpanded ? cls.expandedUdata : ''}`}>
+                    <div className={`${cls.comparisonCard} ${cls.highlighted}`}>
+                        <div className={cls.cardHeader}>
+                            <div className={cls.companyName}>UData <span>Outstaff</span></div>
+                        </div>
+                        <div className={cls.cardBody}>
+                            {udataValues.map((value, index) => (
+                                <div key={index} className={cls.valueItem}>{value}</div>
+                            ))}
+                        </div>
+                        <button 
+                            className={cls.ctaButton} 
+                            onClick={() => setIsExpanded(!isExpanded)}
+                        >
+                            {!isExpanded ?<ArrowsIcon className={isExpanded ? cls.rotatedIcon : ''} /> :
+                            <ArrowsClosedIcon className={!isExpanded ? cls.rotatedIcon : ''} />}
+                        </button>
+                    </div>
+                </div>
+                <div className={`${cls.backgroundAccent} ${isExpanded ? cls.expandedLeft : ''}`}>
+                    <div className={`${cls.comparisonCard} ${cls.internalCard}`}>
+                        <div className={cls.cardHeader}>Internal <br /> Hiring</div>
+                        <div className={cls.cardBody}>
+                            {internalValues.map((value, index) => (
+                                <div key={index} className={cls.valueItem}>{value}</div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+                <div className={`${cls.backgroundAccent2} ${isExpanded ? cls.expandedRight : ''}`}>
+                    <div className={`${cls.comparisonCard} ${cls.freelanceCard}`}>
+                        <div className={cls.cardHeader}>Freelance <br /> Platforms</div>
+                        <div className={cls.cardBody}>
+                            {freelanceValues.map((value, index) => (
+                                <div key={index} className={cls.valueItem}>{value}</div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>
         </section>

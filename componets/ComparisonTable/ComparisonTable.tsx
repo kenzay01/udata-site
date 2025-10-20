@@ -29,10 +29,10 @@ export const ComparisonTable = () => {
 
     const internalValues = [
         "1-3 Months",
-        "15-40% of Salary",
+        <>15-40% of {isExpanded ? <br /> : ""} Salary</>,
         "None",
         "1-3 Months",
-        "Internal Effort",
+        <>Internal {isExpanded ? <br /> : ""} Effort</>,
         "60-70%", 
         "Medium"
     ];
@@ -87,7 +87,7 @@ export const ComparisonTable = () => {
                 </div>
             </div>
             <div className={cls.comparisonTableContentMobile}>
-                <div className={cls.comparisonCard}>
+                <div className={`${cls.comparisonCard} ${cls.criterial}`}>
                     <div className={cls.cardBody}>
                         {criteriaList.map((criteria, index) => (
                             <div key={index} className={cls.criteriaItem}>{criteria}</div>

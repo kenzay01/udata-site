@@ -61,9 +61,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${montserrat.variable}`}>
-        {children}
-
+      <head>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=AW-17687925953"
           strategy="afterInteractive"
@@ -76,7 +74,9 @@ export default function RootLayout({
             gtag('config', 'AW-17687925953');
           `}
         </Script>
-
+      </head>
+      <body className={`${montserrat.variable}`}>
+        {children}
       </body>
     </html>
   );
